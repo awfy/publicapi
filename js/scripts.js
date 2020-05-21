@@ -18,8 +18,12 @@ function checkStatus(response) {
   }
 }
 
+/**
+ * Pull 12 users from the Random User API and limit them to only a handful of 
+ * English speaking countries for the sakes of the search.
+ */
 function employeeData() {
-  fetchData('https://randomuser.me/api/?results=12').then(data => {
+  fetchData('https://randomuser.me/api/?results=12&nat=au,ca,gb,ie,nz,us').then(data => {
     const employees = data.results;
     console.log(employees);
     employees.map(employee => {
