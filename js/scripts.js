@@ -22,26 +22,11 @@ function checkStatus(response) {
  * Pull 12 users from the Random User API and limit them to only a handful of 
  * English speaking countries for the sakes of the search.
  */
-const employeeCount = 12;
-
 function employees() {
-  fetchData(`https://randomuser.me/api/?results=${employeeCount}&nat=au,ca,gb,ie,nz,us`).then(data => {
+  fetchData(`https://randomuser.me/api/?results=12&nat=au,ca,gb,ie,nz,us`).then(data => {
     const employees = data.results;
-    renderCards(employees);
-    // employees.map(employee => renderCards(employee));
+    renderSearch(employees);
   });
-}
-
-function renderSearch() {
-  const searchContainer = document.querySelector('.search-container');
-  searchContainer.innerHTML = `
-    <form action="#" method="GET">
-      <input type="search" id="search-input" class="search-input" placeholder="Search..." />
-      <input type="submit" value="🔍" id="search-submit" class="search-submit" />
-    </form>
-  `;
-  const searchInput = document.querySelector('.search-input');
-  const searchButton = document.querySelector('.search-submit');
 }
 
 function renderModalInfo(employee) {
@@ -113,7 +98,7 @@ function renderModal(employees, index) {
    */
   const nextEmployee = document.querySelector('.modal-next');
   nextEmployee.addEventListener('click', (e) => {
-    if (currentIndex < (employeeCount - 1)) {
+    if (currentIndex < (employees.length - 1)) {
       const modalInfo = document.querySelector('.modal-info-container');
       modalInfo.innerHTML = renderModalInfo(employees[currentIndex += 1]);
     }
@@ -126,6 +111,7 @@ function renderModal(employees, index) {
  */
 function renderCards(employees) {
   const gallery = document.querySelector('#gallery');
+  gallery.innerHTML = '';
   employees.map((employee, i) => {
     const card = document.createElement('div');
     card.className = 'card';
@@ -154,5 +140,29 @@ function renderCards(employees) {
   })
 }
 
-renderSearch();
+function renderSearch(employees) {
+  const searchContainer = document.querySelector('.search-container');
+  searchContainer.innerHTML = `
+    <form action="#" method="GET">
+      <input type="search" id="search-input" class="search-input" placeholder="Search..." />
+      <input type="submit" value="🔍" id="search-submit" class="search-submit" />
+    </form>
+  `;
+  const searchInput = document.querySelector('.search-input');
+  const searchButton = document.querySelector('.search-submit');
+
+  /**
+   * Render the initial page of employees.
+   */
+  renderCards(employees);
+
+  searchButton.addEventListener('click', (e) => {
+    filteredEmployees = employees.filter(employee => {
+      const fullName = `${employee.name.first} ${employee.name.last}`.toLowerCase();
+      return fullName.indexOf(searchInput.value.toLowerCase()) !== -1;
+    });
+    renderCards(filteredEmployees);
+  })
+}
+
 employees();
