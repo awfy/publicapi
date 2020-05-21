@@ -35,6 +35,30 @@ function employeeData() {
   });
 }
 
+function renderSearch() {
+  const searchContainer = document.querySelector('.search-container');
+  console.log(searchContainer);
+
+  const searchForm = document.createElement('form');
+  searchForm.action = '#';
+  searchForm.method = 'GET';
+  searchContainer.appendChild(searchForm);
+
+  const searchInput = document.createElement('input');
+  searchInput.type = 'search';
+  searchInput.id = 'search-input';
+  searchInput.className = 'search-input';
+  searchInput.placeholder = 'Search...';
+  searchForm.appendChild(searchInput);
+
+  const searchButton = document.createElement('input');
+  searchButton.type = 'submit';
+  searchButton.value = '🔍';
+  searchButton.id = 'search-submit';
+  searchButton.className = 'search-submit';
+  searchForm.appendChild(searchButton);
+}
+
 function renderModal(picture, name, email, location, cell, dob) {
   const body = document.querySelector('body');
   const modalContainer = document.createElement('div');
@@ -60,6 +84,10 @@ function renderModal(picture, name, email, location, cell, dob) {
         <p class="modal-text">${cell}</p>
         <p class="modal-text">${location.street.number} ${location.street.name}, ${location.city}, ${countryState} ${location.postcode}</p>
         <p class="modal-text">Birthday: ${dob}</p>
+      </div>
+      <div class="modal-btn-container">
+        <button type="button" id="modal-prev" class="modal-prev btn">Prev</button>
+        <button type="button" id="modal-next" class="modal-next btn">Next</button>
       </div>
     </div>
   `;
@@ -116,3 +144,4 @@ function renderCard(picture, name, email, location, cell, dob) {
 }
 
 employeeData();
+renderSearch();
