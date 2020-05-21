@@ -86,7 +86,7 @@ function renderModal(employees, index) {
    */
   const prevEmployee = document.querySelector('.modal-prev');
   prevEmployee.addEventListener('click', (e) => {
-    if (currentIndex > 0) {
+    if (currentIndex > 1) {
       const modalInfo = document.querySelector('.modal-info-container');
       modalInfo.innerHTML = renderModalInfo(employees[currentIndex -= 1]);
     }

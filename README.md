@@ -7,3 +7,9 @@ For this project, I'll build an app for a fictional company called Awesome Start
 I’ll use the [Random User Generator API](https://randomuser.me/) to grab information for 12 random “employees,” and use that data to build a prototype for an Awesome Startup employee directory.
 
 I’ll request a JSON object from the API and parse the data so that 12 employees are listed in a grid with their thumbnail image, full name, email, and location. Clicking the employee’s image or name will open a modal window with more detailed information, such as the employee’s birthday and address.
+
+### Style changes
+
+1. Removed the `border`s from the `.card`s and added `box-shadow`s.
+2. Reduced the `transition` duration from `.4` to `.2` to make it feel snappier.
+3. Made the spacing a little smaller between the `.card`s.

@@ -90,11 +90,11 @@ header h1 {
   cursor: pointer;
   width: 100%;
   max-width: 360px;
-  margin: 10px 10px 20px;
-  padding: 10px;
-  background: rgba(245, 245, 245, 0.9);
+  margin: 12px;
+  padding: 12px;
+  background: white;
   border-radius: 0.25em;
-  border: 1px solid rgba(50, 50, 50, 0.3);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.1);
   transition: .4s ease-out;
   overflow: hidden;
 }
@@ -148,7 +148,7 @@ header h1 {
   background: rgba(255, 255, 255, 1);
   border-radius: 0.25em;
   border: 1px solid rgba(100, 100, 100, 0.3);
-  transition: .4s ease-out;
+  transition: .2s ease-out;
 }
 
 .modal-close-btn {
@@ -213,7 +213,6 @@ header h1 {
   outline: none;
 }
 
-
 /* ===================================== 
    Media Queries
 ======================================== */
@@ -254,8 +253,7 @@ header h1 {
 @media (min-width: 1024px) {
 
   .card:hover {
-    background: rgba(255, 255, 255, 1);
-    border: 1px solid rgba(50, 50, 50, 0.9);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2), 0 3px 5px rgba(255, 255, 255, 0.1);
   }
 
   .card:hover .card-text {
